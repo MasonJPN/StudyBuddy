@@ -1,0 +1,435 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ================= ROOT THEME (SAGE + WHITE) ================= */
+:root {
+  --bg: #f6f7f4;
+  --bg-secondary: #eef2ec;
+  --card: #ffffff;
+  --card-hover: #f9fbf8;
+  --border: #d6e2d8;
+
+  --text-primary: #1f2933;
+  --text-secondary: #5f6f64;
+
+  --accent: #6baa75;
+  --accent-hover: #5a9a66;
+  --accent-soft: #e3efe6;
+
+  --success: #4caf50;
+  --danger: #e5533d;
+
+  --radius: 18px;
+  --transition: 0.2s ease;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.08);
+}
+
+/* ================= BASE ================= */
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  padding-bottom: 4rem;
+}
+
+/* ================= NAVBAR ================= */
+nav {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav > div {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.9rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+nav p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo-text {
+  font-family: var(--font-brand);
+  letter-spacing: -0.5px;
+}
+
+.logo-img {
+  height: 22px;
+  width: auto;
+  transform: translateY(1px);
+}
+
+.tagline {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-left: 0.75rem; /* visual separation from logo */
+  white-space: nowrap;  /* prevents wrapping */
+}
+
+
+/* ================= FLOATING ADD BUTTON ================= */
+.new-set-btn {
+  position: fixed;
+  top: 120px;
+  right: 32px;
+  height: 48px;
+  padding: 0 24px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: var(--shadow);
+  transition: all var(--transition);
+  z-index: 50;
+}
+
+.new-set-btn:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+/* ================= HOME PAGE – SET GRID ================= */
+.card-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 6rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 32px;
+}
+
+.set-info {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 36px;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition);
+  box-shadow: var(--shadow);
+}
+
+.set-info:hover {
+  background: var(--card-hover);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.set-info h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.set-info p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 28px;
+}
+
+/* ================= SET CARD BUTTONS ================= */
+.button-group {
+  display: flex;
+  gap: 14px;
+  margin-top: auto;
+}
+
+.study-btn,
+.view-btn {
+  flex: 1;
+  height: 46px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all var(--transition);
+}
+
+.study-btn {
+  background: var(--accent);
+  color: white;
+  margin-bottom: 20px;
+}
+
+.study-btn:hover {
+  background: var(--accent-hover);
+}
+
+.view-btn {
+  background: transparent;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+}
+
+.view-btn:hover {
+  background: var(--accent-soft);
+}
+
+/* ================= STUDY PAGE ================= */
+.study-container {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  padding: 2rem;
+}
+
+.study-card {
+  background: var(--card);
+  border-radius: 24px;
+  width: 620px;
+  height: 420px;
+  box-shadow: var(--shadow-lg);
+  cursor: pointer;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.study-card.flipped {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+.study-card h2 {
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+.study-card p {
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* ================= STUDY NAV BUTTONS ================= */
+.study-nav-buttons {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.prev-btn,
+.next-btn {
+  padding: 0 32px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.prev-btn:disabled,
+.next-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ================= CARD LIST ================= */
+.card-list-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+.card-list-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.75rem 2rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow);
+}
+
+.card-list-card button {
+  background: var(--danger);
+  color: white;
+  border: none;
+  padding: 0 20px;
+  height: 40px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ================= FORMS ================= */
+.add-card-form,
+.form-container form {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 3rem;
+  max-width: 600px;
+  margin: 3rem auto;
+  box-shadow: var(--shadow-lg);
+}
+
+input,
+select {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  border: 2px solid var(--border);
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* ================= FOOTER ================= */
+.footer-container {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  padding: 2rem 1.5rem;
+}
+
+.footer-container ul {
+  max-width: 1100px;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: center;   /* 👈 centers items */
+  align-items: center;
+  flex-wrap: wrap;           /* 👈 prevents overflow on small screens */
+
+  gap: 2rem;
+  padding: 0;
+
+  list-style: none;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+.footer-container li {
+  cursor: pointer;
+}
+
+.footer-container li:hover {
+  color: var(--text-primary);
+}
+
+
+.footer-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.socials {
+  
+  display: flex;              /* 👈 THIS is the key */
+  align-items: center;
+  gap: 1rem;
+
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.socials img {
+
+  height: 40px;
+  width: auto;
+  display: block;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.socials img:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+
+
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .study-card {
+    width: 95%;
+    height: 360px;
+  }
+
+  .card-container {
+    grid-template-columns: 1fr;
+  }
+
+  .new-set-btn {
+    right: 20px;
+    top: 100px;
+  }
+}
