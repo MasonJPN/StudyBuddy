@@ -20,7 +20,7 @@ const newSet = {
 }
 
 addSet(newSet)
-Navigate('/')
+Navigate('/home')
 
 }
 
