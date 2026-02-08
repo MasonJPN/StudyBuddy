@@ -60,3 +60,10 @@ function deleteCard(setId,cardId ){
 
     )
 }
+
+
+
+
+
+
+

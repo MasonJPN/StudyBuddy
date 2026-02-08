@@ -15,13 +15,7 @@ const {sets} = useContext(FlashCardContext)
             >
              Add Set
             </button>
-            <button 
-                className="quiz-set-btn"
-                onClick={() =>  Navigate('/quiz')}
-                
-                >
-                Quiz
-            </button>
+            
 
 
         {sets.map((set) =>{
@@ -33,6 +27,7 @@ const {sets} = useContext(FlashCardContext)
                     <p>{set.cards.length} cards</p>
                     <button className="study-btn"onClick={() => Navigate(`/study/${set.id}`)}>Study</button>
                     <button className="view-btn" onClick={() => Navigate(`/set/${set.id}`)}>View</button>
+                    <button className="quiz-set-btn" onClick={() =>  Navigate(`/quiz/${set.id}`)}> Quiz</button>
                 </div>
                 </>
             )

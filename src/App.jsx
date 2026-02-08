@@ -21,7 +21,7 @@ export default function App(){
       <Route path="/study/:setId" element={<Study />} />
       <Route path="/set/:setId" element={<CardList />}/>
       <Route path="/add" element={<AddSetForm />} />
-      <Route path="/quiz" element={<Quiz />} />
+      <Route path="/quiz/:setId" element={<Quiz />} />
     </Routes>
 </main>
     <Footer />
