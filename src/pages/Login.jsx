@@ -7,9 +7,7 @@ export default function Login(){
     return (
     <div className="login-page">
 
-        <div className="login-left">
-            <img src={parrot} />
-        </div>
+       
 
         <div className="login-right">
             <LoginForm />

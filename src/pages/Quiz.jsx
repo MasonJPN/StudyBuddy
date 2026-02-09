@@ -15,7 +15,7 @@ const Quiz = () => {
   const [feedback, setFeedback] = useState("")
 
   if (!currentSet || currentSet.cards.length === 0) {
-    return <div>No cards in this set!</div>
+    return <div className="no-cards">No cards in this set!</div>
   }
 
   if (currentCardIndex >= currentSet.cards.length) {
@@ -27,9 +27,6 @@ const Quiz = () => {
 
   const currentCard = currentSet.cards[currentCardIndex]
 
-
-
-
   function handleCheck(){
     if(answer.toLowerCase() === currentCard.back.toLowerCase()){
       setFeedback("correct")
@@ -40,9 +37,6 @@ const Quiz = () => {
         setFeedback("")
       }, 1000)
 
-
-
-
     } else {
       setFeedback("incorrect")
       setScore(score -1)
@@ -52,19 +46,16 @@ const Quiz = () => {
     }
   }
 
-
-
   return (
-    <>
-      <div className={`quiz-container ${feedback}`}>
-        <div className="card-front">
-          <p>{currentCard.front}</p>
-        </div>
+    <div className={`quiz-container ${feedback}`}>
+      <div className="card-front">
+        <p>{currentCard.front}</p>
       </div>
       
       <div className="study-nav-buttons">
         <input 
           className="answer-input"
+          placeholder='Type Answer'
           value={answer}
           onChange={(e) => setAnswer(e.target.value)}
         />
@@ -76,9 +67,8 @@ const Quiz = () => {
           Check
         </button>
       </div>
-    </>
+    </div>
   )
 }
 
 export default Quiz
-
